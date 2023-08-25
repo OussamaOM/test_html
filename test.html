@@ -1,1 +1,19 @@
 
+
+
+stages:
+  - deploy
+
+deploy:
+  stage: deploy
+  script:
+    - mkdir .public
+    - copy /s * .public
+    - move .public public
+  artifacts:
+    paths:
+      - public
+  only:
+    - main
+  tags:
+    - windows
